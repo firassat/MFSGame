@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-[#000] bg-cover bg-no-repeat overflow-hidden">
+      <body className="overflow-x-hidden">
         {/* <MainParticles /> */}
         <PageAnimatePresence>
           <CookiesProvider>{children}</CookiesProvider>

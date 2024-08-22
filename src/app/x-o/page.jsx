@@ -73,7 +73,7 @@ export default function Page() {
 
   return (
     <div className="h-full translate-y-80">
-      <div className="flex flex-col items-center gap-10 top-1/2 left-1/2 relative -translate-x-1/2 -translate-y-1/2 justify-around md:flex-row">
+      <div className="flex flex-col items-center gap-2 top-1/2 left-1/2 relative -translate-x-1/2 -translate-y-1/2 justify-around md:flex-row md:gap-10">
         <ScoreBoard score={score} onReset={scoreHandler} />
         <Transition y1={-350} y2={30} delay={0.2}>
           <Board
@@ -83,14 +83,14 @@ export default function Page() {
             isFinish={isFinish}
           />
           <Transition
-            className={"flex justify-center mt-9"}
+            className={"flex justify-center"}
             y1={200}
             y2={0}
             r1={50}
             r2={0}
             delay={0.5}
           >
-            <button className="w-40" onClick={() => router.back()}>
+            <button className="w-40  my-9" onClick={() => router.back()}>
               Back
             </button>
           </Transition>

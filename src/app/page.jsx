@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex items-center flex-col justify-around h-screen overflow-hidden">
       <motion.div
-        className="mainContainer w-[400%] md:w-[200%]"
+        className="mainContainer w-[500%] md:w-[200%]"
         initial={{ opacity: 0, top: -350 }}
         animate={{ opacity: 1, top: 320 }}
         exit={{ opacity: 0, top: -350 }}

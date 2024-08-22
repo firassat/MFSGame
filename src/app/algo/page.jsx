@@ -45,9 +45,9 @@ const Page = () => {
 
   return (
     <>
-      <div className="text-center p-20 flex flex-col gap-10 justify-center items-center">
+      <div className="text-center p-10 flex flex-col gap-10 justify-center items-center md:p-20">
         <Transition y1={-200} y2={0} delay={0}>
-          <h1 className="p-5 text-[3rem]">Choose option</h1>
+          <h1 className=" text-2xl  md:text-[3rem]">Choose option</h1>
         </Transition>
         <Transition2 x1={200} x2={0} r1={50} r2={0} delay={0.1}>
           {" "}

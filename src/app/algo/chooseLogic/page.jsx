@@ -7,12 +7,12 @@ function Page() {
   const router = useRouter();
 
   return (
-    <div className="text-center p-10 flex flex-col gap-7 justify-center items-center overflow-auto">
+    <div className="text-center p-5 flex flex-col gap-7 justify-center items-center overflow-auto">
       <Transition className="p-5 text-[3rem] " y1={-100} y2={0} delay={0}>
-        <h1 className="p-5 text-[3rem]">Choose option</h1>
+        <h1 className="p-5 text-[1.5rem] md:text-[3rem]">Choose option</h1>
       </Transition>
       <Transition2
-        className="w-52"
+        className="w-32 md:w-52"
         x1={-200}
         x2={0}
         r1={-50}
@@ -29,7 +29,14 @@ function Page() {
           BFS
         </Link>
       </Transition2>
-      <Transition2 className="w-52" x1={200} x2={0} r1={50} r2={0} delay={0.3}>
+      <Transition2
+        className="w-32 md:w-52"
+        x1={200}
+        x2={0}
+        r1={50}
+        r2={0}
+        delay={0.3}
+      >
         <Link
           href={{
             pathname: "/algo/algoGame",
@@ -41,7 +48,7 @@ function Page() {
         </Link>
       </Transition2>
       <Transition2
-        className="w-52"
+        className="w-32 md:w-52"
         x1={-200}
         x2={0}
         r1={-50}
@@ -58,7 +65,14 @@ function Page() {
           UCS
         </Link>
       </Transition2>
-      <Transition2 className="w-52" x1={200} x2={0} r1={50} r2={0} delay={0.5}>
+      <Transition2
+        className="w-32 md:w-52"
+        x1={200}
+        x2={0}
+        r1={50}
+        r2={0}
+        delay={0.5}
+      >
         <Link
           href={{
             pathname: "/algo/algoGame",
@@ -70,7 +84,7 @@ function Page() {
         </Link>
       </Transition2>
       <Transition2
-        className="w-52"
+        className="w-32 md:w-52"
         x1={-200}
         x2={0}
         r1={-50}
@@ -87,8 +101,15 @@ function Page() {
           AStar
         </Link>
       </Transition2>
-      <Transition2 className="w-52" x1={200} x2={0} r1={50} r2={0} delay={0.7}>
-        <button className="button w-52" onClick={() => router.back()}>
+      <Transition2
+        className="w-32 md:w-52"
+        x1={200}
+        x2={0}
+        r1={50}
+        r2={0}
+        delay={0.7}
+      >
+        <button className="w-32 md:w-52" onClick={() => router.back()}>
           Back
         </button>
       </Transition2>

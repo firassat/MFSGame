@@ -18,22 +18,32 @@ const Page = () => {
 
   const [level, setLevel] = useState();
   useEffect(() => {
-    if (window.localStorage.getItem("game") == null) {
-      window.localStorage.setItem("game", 1);
+    if (typeof window !== "undefined") {
+      if (window?.localStorage?.getItem("game") == null) {
+        window?.localStorage?.setItem("game", 1);
+      }
+      setLevel(window?.localStorage?.getItem("game"));
     }
-    setLevel(window.localStorage.getItem("game"));
   }, []);
 
   const choseHandle = (e) => {
     if (e.target.value == 1) {
       dispatch(
-        setGame(gamemodel[`level${window.localStorage.getItem("game")}`]())
+        setGame(
+          gamemodel[
+            `level${
+              typeof window !== "undefined"
+                ? window?.localStorage?.getItem("game")
+                : 1
+            }`
+          ]()
+        )
       );
       router.push("/algo/userGame");
     }
     if (e.target.value == 2) dispatch(setGame(gamemodel["level2"]()));
     if (e.target.value == 3) {
-      window.localStorage.setItem("game", 1);
+      typeof window !== "undefined" && window?.localStorage?.setItem("game", 1);
       dispatch(setGame(gamemodel["level1"]()));
       router.push("/algo/userGame");
     }

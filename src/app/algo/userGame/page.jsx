@@ -28,7 +28,7 @@ function Page() {
   const [allstate, setallstate] = useState([new State(game, null)]);
   const [alllpeint, setalllpeint] = useState();
   const [level, setLevel] = useState(
-    typeof window !== "undefined" && window?.localStorage?.getItem("game")
+    typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1
   );
 
   const printNextState = action.printNextState(game);
@@ -72,11 +72,10 @@ function Page() {
   const handelNextlevel = () => {
     setwin(0);
     const level = parseInt(
-      typeof window !== "undefined" && window?.localStorage?.getItem("game")
+      typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1
     );
     setLevel(level + 1);
-    typeof window !== "undefined" &&
-      window?.localStorage?.setItem("game", level + 1);
+    typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1;
     setgame(gamemodel[`level${level + 1}`]());
   };
 

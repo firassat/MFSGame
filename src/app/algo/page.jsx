@@ -43,7 +43,7 @@ const Page = () => {
     }
     if (e.target.value == 2) dispatch(setGame(gamemodel["level2"]()));
     if (e.target.value == 3) {
-      typeof window !== "undefined" && window?.localStorage?.setItem("game", 1);
+      typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1;
       dispatch(setGame(gamemodel["level1"]()));
       router.push("/algo/userGame");
     }

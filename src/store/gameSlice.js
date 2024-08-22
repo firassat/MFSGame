@@ -6,7 +6,9 @@ const initialState = {
   value:
     gamemodel[
       `level${
-        typeof window !== "undefined" && window?.localStorage?.getItem("game")
+        typeof window !== "undefined"
+          ? window?.localStorage?.getItem("game")
+          : 1
       }`
     ](),
 };

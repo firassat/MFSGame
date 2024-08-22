@@ -1,6 +1,7 @@
 import PageAnimatePresence from "@/components/PageAnimatePresence";
 import "./globals.css";
 import { MainParticles } from "@/components/MainParticles";
+import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata = {
   title: "MFS GAME",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-[#000] bg-cover bg-no-repeat overflow-hidden">
         <MainParticles />
-        <PageAnimatePresence>{children}</PageAnimatePresence>
+        <PageAnimatePresence>
+          <CookiesProvider>{children}</CookiesProvider>
+        </PageAnimatePresence>
       </body>
     </html>
   );

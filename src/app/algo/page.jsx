@@ -8,32 +8,31 @@ import { setGame } from "../../store/gameSlice.js";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import Transition, { Transition2 } from "@/components/Transition.js";
-import Cookies from "js-cookie";
-
+import { useCookies } from "next-client-cookies";
 export const GameContext = createContext(null);
 
 const Page = () => {
   const gamemodel = new GameLevel();
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const [level, setLevel] = useState(Cookies.get("game"));
+  const cookies = useCookies();
+  const [level, setLevel] = useState(cookies.get("game"));
   useEffect(() => {
-    if (Cookies.get("game") == null) {
-      Cookies.set("game", 1);
+    if (cookies.get("game") == null) {
+      cookies.set("game", 1);
     }
-    setLevel(Cookies.get("game"));
-    dispatch(setGame(gamemodel[`level${Cookies.get("game")}`]()));
+    setLevel(cookies.get("game"));
+    dispatch(setGame(gamemodel[`level${cookies.get("game")}`]()));
   }, []);
 
   const choseHandle = (e) => {
     if (e.target.value == 1) {
-      dispatch(setGame(gamemodel[`level${Cookies.get("game")}`]()));
+      dispatch(setGame(gamemodel[`level${cookies.get("game")}`]()));
       router.push("/algo/userGame");
     }
     if (e.target.value == 2) dispatch(setGame(gamemodel["level2"]()));
     if (e.target.value == 3) {
-      Cookies.set("game", 1);
+      cookies.set("game", 1);
       dispatch(setGame(gamemodel["level1"]()));
       router.push("/algo/userGame");
     }

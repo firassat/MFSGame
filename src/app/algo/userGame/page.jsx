@@ -27,14 +27,12 @@ function Page() {
   const checkmove = action.nextState(game);
 
   useEffect(() => {
-    setwin(action.checkWin(game));
     return () => {
       setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
     };
   }, [movekey]);
 
   useEffect(() => {
-    setwin(action.checkWin(game));
     return () => {
       if (
         (keyM[0] === 1 && checkmove.up[0]) ||
@@ -44,6 +42,7 @@ function Page() {
       ) {
         setgame(action.move(game, keyM));
       }
+      setwin(action.checkWin(game));
     };
   }, [keyM]);
 

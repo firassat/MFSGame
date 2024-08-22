@@ -1,0 +1,351 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  transition: all 0.3s;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Cairo", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  text-transform: uppercase;
+  height: 100vh;
+}
+#tsparticles {
+  position: absolute;
+  z-index: -2;
+}
+.mainContainer {
+  height: 120%;
+  animation-timeline: auto;
+  animation-range-start: normal;
+  animation-range-end: normal;
+  left: 50%;
+  top: 50%;
+  right: 0px;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  position: absolute;
+  z-index: -1;
+  animation: 3s ease-out 0s 1 normal none running fade;
+  background: linear-gradient(
+        to right bottom,
+        rgb(0, 0, 0) 0%,
+        rgb(28, 74, 76) 14%,
+        rgb(73, 194, 199) 30%,
+        rgb(0, 0, 0, 0) 44%
+      )
+      100% center / 50% 100% no-repeat,
+    linear-gradient(
+        to left bottom,
+        rgb(0, 0, 0) 0%,
+        rgb(28, 74, 76) 14%,
+        rgb(73, 194, 199) 30%,
+        rgb(0, 0, 0, 0) 44%
+      )
+      0% center / 50% 100% no-repeat;
+}
+.mainButton {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 10px 32px;
+  background: rgb(73, 194, 199);
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(73, 194, 199);
+  border-radius: 25px;
+}
+.mainButton:hover {
+  background: transparent;
+  color: rgb(73, 194, 199);
+}
+.cell2 {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(73, 195, 199, 0.437);
+  font-size: 90px;
+}
+
+.board2 {
+  display: flex;
+  font-size: 75px;
+  position: relative;
+  width: fit-content;
+  border: 8px solid rgba(73, 195, 199, 0.571);
+  cursor: pointer;
+  border-radius: 50px;
+  text-transform: uppercase;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+.finish {
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
+}
+.text {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.text button {
+  padding: 6px 16px;
+}
+.v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid green;
+  height: 260px;
+  transition: all 0.1 ease-in-out;
+}
+.v.x1 {
+  left: 50%;
+}
+.v.x0 {
+  left: 17%;
+}
+.v.x2 {
+  left: 83%;
+}
+.h {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgb(0, 255, 0);
+  width: 260px;
+  transition: all 0.1 ease-in-out;
+}
+.h.y0 {
+  top: 18.5%;
+}
+.h.y1 {
+  top: 50%;
+}
+.h.y2 {
+  top: 83%;
+}
+.m.x0 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border: 3px solid green;
+  height: 319px;
+  transform: rotateZ(-45deg);
+  transition: all 0.1 ease-in-out;
+}
+.m.x1 {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border: 3px solid green;
+  height: 319px;
+  transform: rotateZ(45deg);
+  transition: all 0.1 ease-in-out;
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.player .active {
+  background-color: rgb(73, 195, 199);
+  color: black;
+}
+.score {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+a {
+  font-weight: 500;
+  color: rgb(73, 194, 199);
+  text-decoration: inherit;
+}
+a:hover {
+  color: rgb(73, 194, 199);
+}
+
+.button {
+  color: white;
+}
+button,
+.button {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  display: block;
+}
+button:hover,
+.button:hover {
+  border-color: rgb(73, 194, 199);
+  color: white;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: rgb(73, 194, 199);
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.board {
+  display: flex;
+  font-size: 40px;
+  overflow: auto;
+  border: 10px solid #aaa;
+  display: flex;
+  position: relative;
+  width: fit-content;
+  border: 8px solid rgba(73, 195, 199, 0.571);
+  cursor: pointer;
+  border-radius: 50px;
+  text-transform: uppercase;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+.chose .board {
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  width: fit-content;
+  margin: -70px;
+  scale: 0.5;
+}
+.listKey {
+  font-size: 40px;
+}
+.listKey .board {
+  display: flex;
+  border: none;
+}
+.listKey .board > div {
+  margin: 10px;
+  cursor: pointer;
+}
+.listKey .board .active {
+  border: 5px solid #ffffff;
+}
+.listKey .board .none {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* .all .board {
+  position: relative;
+  display: flex;
+  font-size: 40px;
+
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  scale: 0.5;
+} */
+.cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(73, 195, 199, 0.405);
+}
+.dis {
+  background-color: rgba(73, 195, 199, 0.405);
+}
+.up {
+  transform: rotate(270deg);
+}
+.down {
+  transform: rotate(90deg);
+}
+.left {
+  transform: rotate(180deg);
+}
+.open {
+  background-color: white;
+}
+.rowcolform {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.rowcolform input {
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  border-radius: 20px;
+}
+svg {
+  color: #aaa;
+}
+.lock svg {
+  color: #aaa;
+}
+.box svg {
+  color: indianred;
+}

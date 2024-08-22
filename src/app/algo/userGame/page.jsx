@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import State from "../../../logic/algo/logic/State";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { setGame } from "../../../store/gameSlice.js";
 import GameLevel from "@/components/GameLevel";
 import { useSearchParams } from "next/navigation";
 import Transition, { Transition3 } from "@/components/Transition";
@@ -26,23 +25,18 @@ function Page() {
   // const [showallstate, setshowallstate] = useState(0);
   const action = new Actions();
   const print = action.print(game);
-  const [allstate, setallstate] = useState([new State(game, null)]);
-  const [alllpeint, setalllpeint] = useState();
   const [level, setLevel] = useState(cookies.get("game"));
 
-  const printNextState = action.printNextState(game);
   let movekey = MoveAction();
   const checkmove = action.nextState(game);
-  const [curentprint, setcurentprint] = useState();
-  const [curentprintindex, setcurentprintindex] = useState(0);
 
   useEffect(() => {
-    setwin(action.checkWin(game));
     setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
   }, [movekey]);
 
   useEffect(() => {
     return () => {
+      setwin(action.checkWin(game));
       if (
         (keyM[0] === 1 && checkmove.up[0]) ||
         (keyM[1] === 1 && checkmove.down[0]) ||
@@ -51,7 +45,6 @@ function Page() {
       ) {
         setoldgame(game);
         setgame(action.move(game, keyM));
-        setallstate([...allstate, new State(game, oldgame)]);
       }
     };
   }, [keyM]);

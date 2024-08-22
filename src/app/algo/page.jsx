@@ -8,6 +8,7 @@ import { setGame } from "../../store/gameSlice.js";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import Transition, { Transition2 } from "@/components/Transition.js";
+import Cookies from "js-cookie";
 
 export const GameContext = createContext(null);
 
@@ -16,35 +17,23 @@ const Page = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [level, setLevel] = useState(window?.localStorage?.getItem("game"));
+  const [level, setLevel] = useState(Cookies.get("game"));
   useEffect(() => {
-    if (localStorage?.getItem("game") == null) {
-      localStorage?.setItem("game", 1);
+    if (Cookies.get("game") == null) {
+      Cookies.set("game", 1);
     }
-    setLevel(window?.localStorage?.getItem("game"));
-    dispatch(
-      setGame(gamemodel[`level${window?.localStorage?.getItem("game")}`]())
-    );
+    setLevel(Cookies.get("game"));
+    dispatch(setGame(gamemodel[`level${Cookies.get("game")}`]()));
   }, []);
 
   const choseHandle = (e) => {
     if (e.target.value == 1) {
-      dispatch(
-        setGame(
-          gamemodel[
-            `level${
-              typeof window !== "undefined"
-                ? window?.localStorage?.getItem("game")
-                : 1
-            }`
-          ]()
-        )
-      );
+      dispatch(setGame(gamemodel[`level${Cookies.get("game")}`]()));
       router.push("/algo/userGame");
     }
     if (e.target.value == 2) dispatch(setGame(gamemodel["level2"]()));
     if (e.target.value == 3) {
-      typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1;
+      Cookies.set("game", 1);
       dispatch(setGame(gamemodel["level1"]()));
       router.push("/algo/userGame");
     }

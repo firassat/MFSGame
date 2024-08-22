@@ -10,6 +10,7 @@ import { setGame } from "../../../store/gameSlice.js";
 import GameLevel from "@/components/GameLevel";
 import { useSearchParams } from "next/navigation";
 import Transition, { Transition3 } from "@/components/Transition";
+import Cookies from "js-cookie";
 
 function Page() {
   const params = useSearchParams();
@@ -27,9 +28,7 @@ function Page() {
   const print = action.print(game);
   const [allstate, setallstate] = useState([new State(game, null)]);
   const [alllpeint, setalllpeint] = useState();
-  const [level, setLevel] = useState(
-    typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1
-  );
+  const [level, setLevel] = useState(Cookies.get("game"));
 
   const printNextState = action.printNextState(game);
   let movekey = MoveAction();
@@ -71,11 +70,9 @@ function Page() {
   const gamemodel = new GameLevel();
   const handelNextlevel = () => {
     setwin(0);
-    const level = parseInt(
-      typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1
-    );
+    const level = parseInt(Cookies.get("game"));
     setLevel(level + 1);
-    typeof window !== "undefined" ? window?.localStorage?.getItem("game") : 1;
+    Cookies.set("game", level + 1);
     setgame(gamemodel[`level${level + 1}`]());
   };
 

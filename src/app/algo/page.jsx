@@ -18,20 +18,22 @@ const Page = () => {
 
   const [level, setLevel] = useState();
   useEffect(() => {
-    if (localStorage.getItem("game") == null) {
-      localStorage.setItem("game", 1);
+    if (window.localStorage.getItem("game") == null) {
+      window.localStorage.setItem("game", 1);
     }
-    setLevel(localStorage.getItem("game"));
+    setLevel(window.localStorage.getItem("game"));
   }, []);
 
   const choseHandle = (e) => {
     if (e.target.value == 1) {
-      dispatch(setGame(gamemodel[`level${localStorage.getItem("game")}`]()));
+      dispatch(
+        setGame(gamemodel[`level${window.localStorage.getItem("game")}`]())
+      );
       router.push("/algo/userGame");
     }
     if (e.target.value == 2) dispatch(setGame(gamemodel["level2"]()));
     if (e.target.value == 3) {
-      localStorage.setItem("game", 1);
+      window.localStorage.setItem("game", 1);
       dispatch(setGame(gamemodel["level1"]()));
       router.push("/algo/userGame");
     }

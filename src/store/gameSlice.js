@@ -3,7 +3,7 @@ import GameLevel from "../components/GameLevel";
 
 const gamemodel = new GameLevel();
 const initialState = {
-  value: gamemodel[`level${localStorage.getItem("game")}`](),
+  value: gamemodel[`level${window.localStorage.getItem("game")}`](),
 };
 
 export const gameSlice = createSlice({

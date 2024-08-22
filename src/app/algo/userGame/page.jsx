@@ -35,8 +35,8 @@ function Page() {
   }, [movekey]);
 
   useEffect(() => {
+    setwin(action.checkWin(game));
     return () => {
-      setwin(action.checkWin(game));
       if (
         (keyM[0] === 1 && checkmove.up[0]) ||
         (keyM[1] === 1 && checkmove.down[0]) ||

@@ -18,9 +18,11 @@ const Page = () => {
   const cookies = useCookies();
   const [level, setLevel] = useState(cookies.get("game"));
   useEffect(() => {
-    if (cookies.get("game") == null) {
+    if (cookies.get("game") == undefined) {
+      console.log();
       cookies.set("game", 1);
     }
+
     setLevel(cookies.get("game"));
     dispatch(setGame(gamemodel[`level${cookies.get("game")}`]()));
   }, []);

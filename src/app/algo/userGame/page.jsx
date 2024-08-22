@@ -39,9 +39,9 @@ function Page() {
         (keyM[3] === 1 && checkmove.right[0])
       ) {
         setgame(action.move(game, keyM));
-        setwin(action.checkWin(game));
-        console.log(win);
       }
+      setwin(action.checkWin(game));
+      console.log(win);
     };
   }, [keyM]);
 

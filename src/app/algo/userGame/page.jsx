@@ -3,8 +3,7 @@
 import Actions from "../../../logic/algo/logic/Actions";
 import MoveAction from "../../../logic/algo/logic/MoveAction";
 import { useEffect, useState } from "react";
-import State from "../../../logic/algo/logic/State";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import GameLevel from "@/components/GameLevel";
 import { useSearchParams } from "next/navigation";
@@ -14,11 +13,8 @@ function Page() {
   const params = useSearchParams();
   const player = params.get("player");
   const cookies = useCookies();
-
   const router = useRouter();
-  const [oldgame, setoldgame] = useState(null);
   const game1 = useSelector((state) => state.game.value);
-  const dispatch = useDispatch();
   const [game, setgame] = useState(game1);
   const [keyM, setkeyM] = useState([0, 0, 0, 0]);
   const [win, setwin] = useState(0);
@@ -31,7 +27,10 @@ function Page() {
   const checkmove = action.nextState(game);
 
   useEffect(() => {
-    setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
+    setwin(action.checkWin(game));
+    return () => {
+      setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
+    };
   }, [movekey]);
 
   useEffect(() => {
@@ -43,7 +42,6 @@ function Page() {
         (keyM[2] === 1 && checkmove.left[0]) ||
         (keyM[3] === 1 && checkmove.right[0])
       ) {
-        setoldgame(game);
         setgame(action.move(game, keyM));
       }
     };

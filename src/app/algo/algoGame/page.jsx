@@ -19,8 +19,6 @@ function Page() {
   const params = useSearchParams();
   const fun = params.get("fun");
 
-  console.log(fun);
-
   const [win, setwin] = useState(0);
   const [showallstate, setshowallstate] = useState(0);
   const [cost, setcost] = useState(0);

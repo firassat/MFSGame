@@ -58,14 +58,12 @@ class AStar {
       nextState.map((state) => {
         if (isnotvis(state.state)) {
           let dist = dis(state.state);
-          console.log(dist);
           const newState = new State(
             state.state,
             newState1,
             dist,
             state.cost + newState1.gCost
           );
-          console.log(newState1);
           newState.calculateFCost();
           queue.push(newState);
           visited.push(newState.GameState.board);

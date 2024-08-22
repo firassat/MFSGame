@@ -14,9 +14,7 @@ export const MainParticles = () => {
     });
   }, []);
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  const particlesLoaded = (container) => {};
 
   const options = useMemo(
     () => ({

@@ -24,7 +24,6 @@ class DFS {
         const state = this.visited.length;
         return { newState1, state };
       }
-      console.log(this.visited.length);
 
       this.visited.push(newState1.GameState.board);
       const nextState = action.getNextState(newState1.GameState);

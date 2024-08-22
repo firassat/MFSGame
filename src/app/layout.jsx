@@ -1,6 +1,6 @@
 import PageAnimatePresence from "@/components/PageAnimatePresence";
 import "./globals.css";
-import { MainParticles } from "@/components/MainParticles";
+// import { MainParticles } from "@/components/MainParticles";
 import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="bg-[#000] bg-cover bg-no-repeat overflow-hidden">
-        <MainParticles />
+        {/* <MainParticles /> */}
         <PageAnimatePresence>
           <CookiesProvider>{children}</CookiesProvider>
         </PageAnimatePresence>

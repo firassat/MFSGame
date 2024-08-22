@@ -53,7 +53,6 @@ function Page() {
     dispatch(setGame(gamemodel.setlevel4(board)));
     router.push("/algo/userGame" + "?" + "player=true");
   }
-  console.log(board);
   function rowcolHandle(e) {
     e.preventDefault();
     const newboard = [];
@@ -64,7 +63,6 @@ function Page() {
       }
       newboard.push(row);
     }
-    console.log(newboard);
     setboard(newboard);
   }
   return !board ? (

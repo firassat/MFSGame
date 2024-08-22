@@ -7,7 +7,7 @@ function Page() {
   const router = useRouter();
 
   return (
-    <div className="text-center p-10 flex flex-col gap-7 justify-center items-center">
+    <div className="text-center p-10 flex flex-col gap-7 justify-center items-center overflow-auto">
       <Transition className="p-5 text-[3rem] " y1={-100} y2={0} delay={0}>
         <h1 className="p-5 text-[3rem]">Choose option</h1>
       </Transition>

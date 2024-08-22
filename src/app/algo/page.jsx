@@ -19,7 +19,6 @@ const Page = () => {
   const [level, setLevel] = useState(cookies.get("game"));
   useEffect(() => {
     if (cookies.get("game") == undefined) {
-      console.log();
       cookies.set("game", 1);
     }
 

@@ -3,14 +3,7 @@ import GameLevel from "../components/GameLevel";
 
 const gamemodel = new GameLevel();
 const initialState = {
-  value:
-    gamemodel[
-      `level${
-        typeof window !== "undefined"
-          ? window?.localStorage?.getItem("game")
-          : 1
-      }`
-    ](),
+  value: gamemodel[`level1`](),
 };
 
 export const gameSlice = createSlice({

@@ -16,14 +16,15 @@ const Page = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [level, setLevel] = useState();
+  const [level, setLevel] = useState(window?.localStorage?.getItem("game"));
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (window?.localStorage?.getItem("game") == null) {
-        window?.localStorage?.setItem("game", 1);
-      }
-      setLevel(window?.localStorage?.getItem("game"));
+    if (localStorage?.getItem("game") == null) {
+      localStorage?.setItem("game", 1);
     }
+    setLevel(window?.localStorage?.getItem("game"));
+    dispatch(
+      setGame(gamemodel[`level${window?.localStorage?.getItem("game")}`]())
+    );
   }, []);
 
   const choseHandle = (e) => {

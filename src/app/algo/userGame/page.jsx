@@ -27,9 +27,7 @@ function Page() {
   const checkmove = action.nextState(game);
 
   useEffect(() => {
-    return () => {
-      setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
-    };
+    setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
   }, [movekey]);
 
   useEffect(() => {
@@ -41,8 +39,9 @@ function Page() {
         (keyM[3] === 1 && checkmove.right[0])
       ) {
         setgame(action.move(game, keyM));
+        setwin(action.checkWin(game));
+        console.log(win);
       }
-      setwin(action.checkWin(game));
     };
   }, [keyM]);
 

@@ -9,6 +9,11 @@ import GameLevel from "@/components/GameLevel";
 import { useSearchParams } from "next/navigation";
 import Transition, { Transition3 } from "@/components/Transition";
 import { useCookies } from "next-client-cookies";
+import { SlArrowUp } from "react-icons/sl";
+import { SlArrowDown } from "react-icons/sl";
+import { SlArrowLeft } from "react-icons/sl";
+import { SlArrowRight } from "react-icons/sl";
+
 function Page() {
   const params = useSearchParams();
   const player = params.get("player");
@@ -26,22 +31,34 @@ function Page() {
   let movekey = MoveAction();
   const checkmove = action.nextState(game);
 
+  const handelKey = (e) => {
+    if (e === "u") {
+      setkeyM([1, 0, 0, 0]);
+    }
+    if (e === "d") {
+      setkeyM([0, 1, 0, 0]);
+    }
+    if (e === "l") {
+      setkeyM([0, 0, 1, 0]);
+    }
+    if (e === "r") {
+      setkeyM([0, 0, 0, 1]);
+    }
+  };
   useEffect(() => {
     setkeyM([movekey.up, movekey.down, movekey.left, movekey.rgiht]);
   }, [movekey]);
 
   useEffect(() => {
-    return () => {
-      if (
-        (keyM[0] === 1 && checkmove.up[0]) ||
-        (keyM[1] === 1 && checkmove.down[0]) ||
-        (keyM[2] === 1 && checkmove.left[0]) ||
-        (keyM[3] === 1 && checkmove.right[0])
-      ) {
-        setgame(action.move(game, keyM));
-        setwin(action.checkWin(action.move(game, keyM)));
-      }
-    };
+    if (
+      (keyM[0] === 1 && checkmove.up[0]) ||
+      (keyM[1] === 1 && checkmove.down[0]) ||
+      (keyM[2] === 1 && checkmove.left[0]) ||
+      (keyM[3] === 1 && checkmove.right[0])
+    ) {
+      setgame(action.move(game, keyM));
+      setwin(action.checkWin(action.move(game, keyM)));
+    }
   }, [keyM]);
 
   // useEffect(() => {
@@ -105,6 +122,23 @@ function Page() {
           <Transition3 s1={0} s2={1} r1={50} r2={0} delay={0.1}>
             {print}
           </Transition3>
+          <div className="flex flex-col gap-4 justify-center items-center w-1/2 md:hidden ">
+            <div onClick={() => handelKey("u")}>
+              <SlArrowUp />
+            </div>
+            <div className="flex justify-between gap-12">
+              <div onClick={() => handelKey("l")}>
+                <SlArrowLeft />
+              </div>
+              <div onClick={() => handelKey("r")}>
+                <SlArrowRight />
+              </div>
+            </div>
+
+            <div onClick={() => handelKey("d")}>
+              <SlArrowDown />
+            </div>
+          </div>
           <div className="flex gap-5 items-end justify-center">
             <Transition y1={200} y2={0} r1={50} r2={0} delay={0.7}>
               <button className="mainButton2" onClick={() => router.back()}>

@@ -77,7 +77,7 @@ function Page() {
         <input type="submit" className="cursor-pointer button" value="OK" />
       </Transition>
       <Transition y1={200} y2={0} r1={50} r2={0} delay={0.3}>
-        <button className="w-40" onClick={() => router.push("/algo")}>
+        <button className="mainButton2" onClick={() => router.push("/algo")}>
           Back
         </button>
       </Transition>
@@ -85,7 +85,7 @@ function Page() {
   ) : (
     <div
       key={key}
-      className="text-center  flex flex-col gap-5 justify-center items-center h-screen"
+      className="text-center  flex flex-col gap-5 justify-around   items-center h-screen"
     >
       <div className="listKey">
         <div className="board">
@@ -206,7 +206,9 @@ function Page() {
           </div>
         ))}
       </div>
-      <button onClick={boardSend}>موافق</button>
+      <button className="mainButton2" onClick={boardSend}>
+        OK
+      </button>
     </div>
   );
 }

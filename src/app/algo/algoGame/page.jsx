@@ -107,31 +107,35 @@ function Page() {
     );
   };
   return (
-    <div className="flex flex-col gap-5 justify-center items-center h-screen">
+    <div className="flex flex-col mt-7 gap-5 justify-start items-center h-screen">
       {!win ? (
         <>
           <h1 className="m-24 text-center">{"didn't solve"} </h1>
-          <button className="button w-40" onClick={() => router.back()}>
+          <button className="mainButton2" onClick={() => router.back()}>
             Back
           </button>
         </>
       ) : (
         <>
-          <h1 className="text-center">{allstate} All State</h1>
-          <h1 className="text-center">{alllpeint.length} State</h1>
-          <h1 className="text-center ">{cost} Cost</h1>
+          <div className="flex flex-col gap-1">
+            <h1 className="text-center">{allstate} All State</h1>
+            <h1 className="text-center">{alllpeint.length} State</h1>
+            <h1 className="text-center ">{cost} Cost</h1>
+          </div>
           <Display />
-          <button
-            className="button w-40"
-            onClick={() => {
-              setcurentprintindex(alllpeint.length);
-            }}
-          >
-            Replay
-          </button>
-          <button className="button w-40" onClick={() => router.back()}>
-            Back
-          </button>
+          <div className="flex flex-col gap-3">
+            <button
+              className="mainButton2"
+              onClick={() => {
+                setcurentprintindex(alllpeint.length);
+              }}
+            >
+              Replay
+            </button>
+            <button className="mainButton2" onClick={() => router.back()}>
+              Back
+            </button>
+          </div>
         </>
       )}
     </div>

@@ -46,38 +46,38 @@ const Page = () => {
   return (
     <>
       <div className="text-center p-10 flex flex-col gap-10 justify-center items-center md:p-20">
-        <Transition y1={-200} y2={0} delay={0}>
-          <h1 className=" text-2xl  md:text-[3rem]">Choose option</h1>
+        <Transition y1={-100} y2={0} delay={0}>
+          <h1 className=" text-3xl  md:text-[3rem]">Choose option</h1>
         </Transition>
-        <Transition2 x1={200} x2={0} r1={50} r2={0} delay={0.1}>
+        <Transition2 x1={100} x2={0} r1={0} r2={0} delay={0.1}>
           {" "}
-          <button className="w-52" onClick={choseHandle} value={1}>
+          <button className="mainButton2" onClick={choseHandle} value={1}>
             {level == 1 ? "START GAME" : "Continue with Level " + level}
           </button>
         </Transition2>
 
         {level > 1 && (
-          <Transition2 x1={-200} x2={0} r1={-50} r2={0} delay={0.2}>
+          <Transition2 x1={-100} x2={0} r1={-0} r2={0} delay={0.2}>
             {" "}
-            <button className="w-52" onClick={choseHandle} value={3}>
+            <button className="mainButton2" onClick={choseHandle} value={3}>
               NEW GAME
             </button>
           </Transition2>
         )}
-        <Transition2 x1={200} x2={0} r1={50} r2={0} delay={0.3}>
+        <Transition2 x1={100} x2={0} r1={0} r2={0} delay={0.3}>
           {" "}
-          <button className="w-52" onClick={choseHandle} value={4}>
+          <button className="mainButton2" onClick={choseHandle} value={4}>
             Test Smart Search Algorithms
           </button>
         </Transition2>
-        <Transition2 x1={-200} x2={0} r1={-50} r2={0} delay={0.4}>
+        <Transition2 x1={-100} x2={0} r1={-0} r2={0} delay={0.4}>
           {" "}
-          <Link href={"/algo/dis"} className="w-52 block button">
+          <Link href={"/algo/dis"} className="mainButton2  ">
             Design Level
           </Link>
         </Transition2>
-        <Transition2 x1={200} x2={0} r1={50} r2={0} delay={0.5}>
-          <button className="button w-52" onClick={() => router.back()}>
+        <Transition2 x1={100} x2={0} r1={0} r2={0} delay={0.5}>
+          <button className="mainButton2" onClick={() => router.back()}>
             Back
           </button>
         </Transition2>

@@ -88,15 +88,43 @@ body {
   background: transparent;
   color: rgb(73, 194, 199);
 }
+.mainButton2 {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 10px 32px;
+  background-color: #1a1a1a;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-radius: 25px;
+  width: 100%;
+}
+.mainButton2:hover {
+  background: transparent;
+  color: rgb(73, 194, 199);
+}
 .cell2 {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   border: 1px solid rgba(73, 195, 199, 0.437);
-  font-size: 50px;
+  font-size: 70px;
 }
 
 .board2 {
@@ -311,8 +339,8 @@ button:hover,
   scale: 0.5;
 } */
 .cell {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;

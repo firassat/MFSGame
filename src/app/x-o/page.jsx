@@ -10,7 +10,7 @@ import {
 import PlayerControls from "@/components/PlayerControls";
 import ScoreBoard from "@/components/ScoreBoard";
 import Board from "@/components/Board";
-import Transition from "@/components/Transition";
+import Transition, { Transition3 } from "@/components/Transition";
 
 export default function Page() {
   const [game, setGame] = useState(initializeGame());
@@ -72,30 +72,23 @@ export default function Page() {
   };
 
   return (
-    <div className="h-full translate-y-80">
-      <div className="flex flex-col items-center gap-2 top-1/2 left-1/2 relative -translate-x-1/2 -translate-y-1/2 justify-around md:flex-row md:gap-10">
+    <div className=" pt-5">
+      <div className=" flex flex-col items-center gap-8 relative justify-around md:flex-row md:gap-10">
         <ScoreBoard score={score} onReset={scoreHandler} />
-        <Transition y1={-350} y2={30} delay={0.2}>
+        <Transition3 s1={0} s2={1} r1={-40} r2={0} delay={0.2}>
           <Board
             board={board}
             clickHandler={clickHandler}
             win={win}
             isFinish={isFinish}
           />
-          <Transition
-            className={"flex justify-center"}
-            y1={200}
-            y2={0}
-            r1={50}
-            r2={0}
-            delay={0.5}
-          >
-            <button className="w-40  my-9" onClick={() => router.back()}>
-              Back
-            </button>
-          </Transition>
-        </Transition>
+        </Transition3>
         <PlayerControls player={player} onPlayerChange={playerHandler} />
+        <Transition y1={100} y2={0} r1={0} r2={0} delay={0.4}>
+          <button className="mainButton" onClick={() => router.back()}>
+            Back
+          </button>
+        </Transition>
 
         {isFinish && (
           <div className="text fixed text-center rounded-3xl md:translate-y-52">

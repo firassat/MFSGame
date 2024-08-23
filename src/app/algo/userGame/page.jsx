@@ -75,33 +75,47 @@ function Page() {
             <h1 className="text-xl text-center">{win ? "You Won" : ""}</h1>
           </Transition>
           <Transition y1={200} y2={0} r1={50} r2={0} delay={0.1}>
-            <button onClick={handelReset}>Play again</button>
+            <button className="mainButton2" onClick={handelReset}>
+              Play again
+            </button>
           </Transition>
           <Transition y1={200} y2={0} r1={50} r2={0} delay={0.2}>
-            <button onClick={handelNextlevel}>Next level</button>
+            <button className="mainButton2" onClick={handelNextlevel}>
+              Next level
+            </button>
           </Transition>
         </>
       ) : win && player ? (
         <>
           <h1 className=" text-center">{win ? "You Won" : ""}</h1>
           <Transition y1={200} y2={0} r1={50} r2={0} delay={0.2}>
-            <button onClick={() => router.push("/algo")}>Back</button>
+            <button
+              className="mainButton2"
+              onClick={() => router.push("/algo")}
+            >
+              Back
+            </button>
           </Transition>
         </>
       ) : (
-        <div className="flex flex-col justify-center items-center w-full h-screen gap-7">
+        <div className="flex flex-col justify-around items-center w-full h-screen gap-7 ">
           <Transition y1={-200} y2={0} r1={50} r2={0} delay={0.5}>
             <h2 className="text-xl">level {level}</h2>
           </Transition>
           <Transition3 s1={0} s2={1} r1={50} r2={0} delay={0.1}>
             {print}
           </Transition3>
-          <div className="flex gap-5 justify-center">
+          <div className="flex gap-5 items-end justify-center">
             <Transition y1={200} y2={0} r1={50} r2={0} delay={0.7}>
-              <button onClick={() => router.back()}>Back</button>
+              <button className="mainButton2" onClick={() => router.back()}>
+                Back
+              </button>
             </Transition>
             <Transition y1={200} y2={0} r1={50} r2={0} delay={0.8}>
-              <button onClick={() => setgame(gamemodel[`level${level}`]())}>
+              <button
+                className="mainButton2"
+                onClick={() => setgame(gamemodel[`level${level}`]())}
+              >
                 RESET
               </button>
             </Transition>

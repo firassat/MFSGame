@@ -72,20 +72,41 @@ export default function Page() {
   };
 
   return (
-    <div className=" pt-5">
-      <div className=" flex flex-col items-center gap-8 relative justify-around md:flex-row md:gap-10">
+    <div className="pt-5 md:pt-0">
+      <div className=" flex flex-col items-center gap-8 relative justify-around md:flex-row md:gap-10 md:h-screen">
         <ScoreBoard score={score} onReset={scoreHandler} />
-        <Transition3 s1={0} s2={1} r1={-40} r2={0} delay={0.2}>
-          <Board
-            board={board}
-            clickHandler={clickHandler}
-            win={win}
-            isFinish={isFinish}
-          />
-        </Transition3>
+        <div>
+          <Transition3 s1={0} s2={1} r1={-40} r2={0} delay={0.2}>
+            <Board
+              board={board}
+              clickHandler={clickHandler}
+              win={win}
+              isFinish={isFinish}
+            />
+          </Transition3>
+          <Transition
+            className={"hidden md:block w-full mt-5 text-center"}
+            y1={100}
+            y2={0}
+            r1={0}
+            r2={0}
+            delay={0.4}
+          >
+            <button className="mainButton " onClick={() => router.back()}>
+              Back
+            </button>
+          </Transition>
+        </div>
         <PlayerControls player={player} onPlayerChange={playerHandler} />
-        <Transition y1={100} y2={0} r1={0} r2={0} delay={0.4}>
-          <button className="mainButton" onClick={() => router.back()}>
+        <Transition
+          className={"md:hidden "}
+          y1={100}
+          y2={0}
+          r1={0}
+          r2={0}
+          delay={0.4}
+        >
+          <button className="mainButton " onClick={() => router.back()}>
             Back
           </button>
         </Transition>

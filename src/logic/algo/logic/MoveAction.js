@@ -25,16 +25,16 @@ function MoveAction() {
     }
 
     function handleTouchEnd() {
-      if (touchEndX < touchStartX - 30) {
+      if (touchEndX < touchStartX - 20) {
         setKeyState({ up: 0, down: 0, left: 1, rgiht: 0 });
       }
-      if (touchEndX > touchStartX + 30) {
+      if (touchEndX > touchStartX + 20) {
         setKeyState({ up: 0, down: 0, left: 0, rgiht: 1 });
       }
-      if (touchEndY < touchStartY - 30) {
+      if (touchEndY < touchStartY - 20) {
         setKeyState({ up: 1, down: 0, left: 0, rgiht: 0 });
       }
-      if (touchEndY > touchStartY + 30) {
+      if (touchEndY > touchStartY + 20) {
         setKeyState({ up: 0, down: 1, left: 0, rgiht: 0 });
       }
     }
@@ -58,12 +58,6 @@ function MoveAction() {
     window.addEventListener("keyup", () =>
       setKeyState({ up: 0, down: 0, left: 0, rgiht: 0 })
     );
-
-    return () => {
-      window.removeEventListener("touchstart", handleTouchStart, false);
-      window.removeEventListener("touchmove", handleTouchMove, false);
-      window.removeEventListener("touchend", handleTouchEnd, false);
-    };
   }, []);
 
   return keyState;

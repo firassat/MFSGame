@@ -50,6 +50,8 @@ function Page() {
     setcurentKey(key);
   }
   function boardSend() {
+    console.log(board);
+
     dispatch(setGame(gamemodel.setlevel4(board)));
     router.push("/algo/userGame" + "?" + "player=true");
   }
@@ -68,7 +70,7 @@ function Page() {
   return !board ? (
     <form action="" className="rowcolform h-screen" onSubmit={rowcolHandle}>
       <Transition y1={200} y2={0} r1={50} r2={0} delay={0}>
-        <input type="number" placeholder="row" min="1" max="20" />
+        <input type="number" placeholder="row" min="1" max="10" />
       </Transition>
       <Transition y1={200} y2={0} r1={50} r2={0} delay={0.1}>
         <input type="number" placeholder="col" min="1" max="10" />
@@ -206,9 +208,11 @@ function Page() {
           </div>
         ))}
       </div>
-      <button className="mainButton2" onClick={boardSend}>
-        OK
-      </button>
+      <Transition y1={200} y2={0} r1={50} r2={0} delay={0}>
+        <button className="mainButton2 w-12" onClick={boardSend}>
+          OK
+        </button>
+      </Transition>
     </div>
   );
 }

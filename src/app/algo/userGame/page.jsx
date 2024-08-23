@@ -122,11 +122,11 @@ function Page() {
           <Transition3 s1={0} s2={1} r1={50} r2={0} delay={0.1}>
             {print}
           </Transition3>
-          <div className="flex flex-col gap-4 justify-center items-center w-1/2 md:hidden ">
+          <div className="flex flex-col gap-8 justify-center items-center w-1/2 md:hidden ">
             <div onClick={() => handelKey("u")}>
               <SlArrowUp />
             </div>
-            <div className="flex justify-between gap-12">
+            <div className="flex justify-between gap-20 ">
               <div onClick={() => handelKey("l")}>
                 <SlArrowLeft />
               </div>

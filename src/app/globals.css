@@ -170,7 +170,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   border: 3px solid green;
-  height: 260px;
+  height: 80%;
   transition: all 0.1 ease-in-out;
 }
 .v.x1 {
@@ -188,7 +188,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   border: 3px solid rgb(0, 255, 0);
-  width: 260px;
+  width: 80%;
   transition: all 0.1 ease-in-out;
 }
 .h.y0 {
@@ -205,7 +205,7 @@ body {
   top: 0;
   left: 50%;
   border: 3px solid green;
-  height: 319px;
+  height: 100%;
   transform: rotateZ(-45deg);
   transition: all 0.1 ease-in-out;
 }
@@ -214,7 +214,7 @@ body {
   top: 0;
   right: 50%;
   border: 3px solid green;
-  height: 319px;
+  height: 100%;
   transform: rotateZ(45deg);
   transition: all 0.1 ease-in-out;
 }
